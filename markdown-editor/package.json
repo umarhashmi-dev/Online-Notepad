@@ -5,8 +5,8 @@
   "productName": "Markdownify Web",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amitmerchant1990/markdownify-web.git",
-    "docs": "https://github.com/amitmerchant1990/markdownify-web/blob/master/README.md"
+    "url": "https://www.umarhashmi.dev",
+    "docs": "https://www.umarhashmi.dev"
   },
   "keywords": [
     "markdown",
@@ -18,14 +18,14 @@
     "html",
     "desktop"
   ],
-  "author": "Amit Merchant <bullredeyes@gmail.com>",
+  "author": "Umar Hashmi <contact@umarhashmi.dev>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amitmerchant1990/markdownify-web/issues"
+    "url": "https://www.umarhashmi.dev"
   },
-  "homepage": "https://github.com/amitmerchant1990/markdownify-web#readme",
+  "homepage": "https://www.umarhashmi.dev",
   "_npmUser": {
-    "name": "amit_merchant",
-    "email": "bullredeyes@gmail.com"
+    "name": "umar_hashmi",
+    "email": "contact@umarhashmi.dev"
   }
 }

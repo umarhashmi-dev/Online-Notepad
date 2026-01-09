@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About Us - Notepad Online</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4d4d4d">
+    <meta name="description" content="About Notepad Online - Simple, fast, and offline-capable text editor.">
+    <meta name="author" content="Umar Hashmi">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        body.dark .content-container {
+            background: #1e1e1e;
+            color: #ddd;
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3 {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand app-heading glow-text tilt-css" href="index.html">Notepad Online</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-container">
+            <h1>About Us</h1>
+            <p>Welcome to <strong>Notepad Online</strong>, your go-to web-based application for seamless and efficient
+                note-taking. We provide a clutter-free environment designed for writers, students, and professionals who
+                value simplicity and speed.</p>
+
+            <h3>Who We Are</h3>
+            <p>Notepad Online was founded with a single goal in mind: to create the fastest, most reliable online
+                notepad that works everywhere. We understand that ideas can strike at any moment, and you need a tool
+                that is ready when you are, even without an internet connection.</p>
+
+            <h3>What We Offer</h3>
+            <p>Our application is built using modern web technologies to provide features such as:</p>
+            <ul>
+                <li><strong>Offline Capability:</strong> Access and edit your notes even when you're offline.</li>
+                <li><strong>Auto-Save:</strong> Never worry about losing your work; everything is saved locally in
+                    real-time.</li>
+                <li><strong>Privacy First:</strong> Your notes are stored on your device, not on our servers.</li>
+                <li><strong>Customization:</strong> Choice of themes including dark mode and various fonts for a
+                    personalized experience.</li>
+                <li><strong>Productivity Tools:</strong> Built-in word count, statistics, and atmospheric sounds to help
+                    you focus.</li>
+            </ul>
+
+            <h3>Our Commitment</h3>
+            <p>We are committed to keeping Notepad Online free, fast, and focused on your needs. We continuously update
+                the application based on user feedback to ensure it remains the best tool in its class.</p>
+
+            <h3>The Developer</h3>
+            <p>Developed and maintained by <strong>Umar Hashmi</strong>, a software engineer with a passion for building
+                user-centric tools. You can find more about the developer at <a href="https://umarhashmi.dev"
+                    target="_blank">umarhashmi.dev</a>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">Terms & Conditions</a>
+                <a href="about-us.html">About Us</a>
+                <a href="contact-us.html">Contact Us</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; <span id="year"></span> <a href="https://umarhashmi.dev" target="_blank">Umar Hashmi</a>. All
+                rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>

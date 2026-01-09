@@ -1,6 +1,6 @@
 importScripts('js/libraries/cache-polyfill.js');
 
-let CACHE_VERSION = 'app-v33';
+let CACHE_VERSION = 'app-v34';
 let CACHE_FILES = [
     '/',
     'index.html',
@@ -31,13 +31,14 @@ let CACHE_FILES = [
     'img/navbar/dropdown.svg',
     'img/navbar/timer.svg',
     'img/tooltip.svg',
-    'img/amitmerchant-icon.svg',
     'fonts/OpenDyslexic-Regular.otf',
     'fonts/Cookie-Regular.ttf',
     'sounds/typewriter/typewriter-key-press-02.mp3',
     'sounds/typewriter/typewriter-carriage-return-01.mp3',
     'sounds/typewriter/space.mp3',
-    'sounds/short-alarm-beep.mp3'
+    'sounds/short-alarm-beep.mp3',
+    'css/rich-text-editor.css',
+    'js/rich-text-editor.js'
 ];
 
 self.addEventListener('install', function (event) {

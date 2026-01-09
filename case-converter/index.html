@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="A simple case converter tool to convert text to different cases">
-    <meta name="author" content="Amit Merchant">
+    <meta name="author" content="Umar Hashmi">
     <meta name="keywords" content="case,converter,tool,text,case converter" />
     <meta name="application-name" content="Case Converter" />
     <meta name="theme-color" content="#343a40">
-    
-    <meta property="og:title" content="Case Converter | notepad.js.org" />
+
+    <meta property="og:title" content="Case Converter | Notepad Online" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://notepad.js.org/case-converter" />
+    <meta property="og:url" content="https://www.notepadonline.app/case-converter" />
     <meta property="og:description" content="A simple case converter tool to convert text to different cases" />
-    <meta property="og:image" content="https://notepad.js.org/art/case-converter.png" />
-    
+    <meta property="og:image" content="https://www.notepadonline.app/art/case-converter.png" />
+
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Case Converter | notepad.js.org" />
+    <meta name="twitter:title" content="Case Converter | Notepad Online" />
     <meta name="twitter:description" content="A simple case converter tool to convert text to different cases" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:image" content="https://notepad.js.org/art/case-converter.png" />
+    <meta property="twitter:image" content="https://www.notepadonline.app/art/case-converter.png" />
 
-    <title>Case Converter | notepad.js.org</title>
+    <title>Case Converter | Notepad Online</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="flex-navbar">
@@ -36,11 +38,13 @@
             </span>
             <div class="generic-flex">
                 <button class="btn btn-link text-white" data-toggle="modal" href="#aboutModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                    </svg> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                    </svg>
                 </button>
-            </div> 
+            </div>
         </div>
     </nav>
 
@@ -57,14 +61,17 @@
         </select>
         <button class="btn btn-primary" onclick="convertCase()">Convert</button>
     </div>
-    
+
     <div class="container">
-        <textarea id="inputText" class="form-control" placeholder="Enter text here and select a case to convert..." autofocus></textarea>
-        <button id="copyButton" class="btn btn-outline-secondary" type="button" onclick="copyToClipboard()">Copy</button>
+        <textarea id="inputText" class="form-control" placeholder="Enter text here and select a case to convert..."
+            autofocus></textarea>
+        <button id="copyButton" class="btn btn-outline-secondary" type="button"
+            onclick="copyToClipboard()">Copy</button>
     </div>
 
     <!-- About Modal -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -74,7 +81,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>This simple case converter tool allows you to convert any text between various letter cases, including...</p> 
+                    <p>This simple case converter tool allows you to convert any text between various letter cases,
+                        including...</p>
                     <ul>
                         <li>Lower case</li>
                         <li>Upper case</li>
@@ -85,9 +93,12 @@
                         <li>Inverse case</li>
                     </ul>
                     <p>Simply <b>enter your text</b>, <b>select the desired case</b>, and click <b>"Convert"</b>.</p>
-                    <p>Enjoy using this tool? If so, consider <a href="https://buymeacoffee.com/amitmerchant" target="_blank">buying me a coffee</a> so that I keep working on improving it further and the experience remains ad-free.</p>
+                    <p>Enjoy using this tool? If so, consider <a href="https://www.umarhashmi.dev"
+                            target="_blank">visiting my website</a> so that I keep working on improving it further and
+                        the experience remains ad-free.</p>
                     <p class="text-center mb-0">
-                        <b>Brought to you by <a href="https://notepad.js.org/" class="about-author-link">notepad.js.org</a></b>
+                        <b>Brought to you by <a href="https://www.notepadonline.app/" class="about-author-link">Notepad
+                                Online</a></b>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -101,7 +112,7 @@
         <div class="toast-body">
         </div>
     </div>
-    
+
     <script>
         function copyToClipboard() {
             const inputText = document.getElementById('inputText');
@@ -109,7 +120,7 @@
             if (!inputText.value) {
                 return;
             }
-            
+
             navigator.clipboard.writeText(inputText.value);
 
             // Change the button state to indicate copied
@@ -135,12 +146,12 @@
                 showToast('Please enter text to convert.');
                 return;
             }
-        
+
             if (!caseType) {
                 showToast('Please select a case to convert.');
                 return;
-            }            
-        
+            }
+
             switch (caseType) {
                 case 'lower':
                     outputText = inputText.value.toLowerCase();
@@ -152,19 +163,19 @@
                     const paragraphs = inputText.value.split('\n');
                     outputText = paragraphs.map(paragraph => {
                         const sentences = paragraph.split('. ');
-                        const capitalizedSentences = sentences.map(sentence => 
+                        const capitalizedSentences = sentences.map(sentence =>
                             sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase()
                         ).join('. ');
                         return capitalizedSentences.charAt(0).toUpperCase() + capitalizedSentences.slice(1);
                     }).join('\n');
                     break;
                 case 'capitalized':
-                    outputText = inputText.value.split(' ').map(word => 
+                    outputText = inputText.value.split(' ').map(word =>
                         word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
                     ).join(' ');
                     break;
                 case 'alternating':
-                    outputText = inputText.value.split('').map((char, index) => 
+                    outputText = inputText.value.split('').map((char, index) =>
                         index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
                     ).join('');
                     break;
@@ -182,12 +193,12 @@
                     outputText = paragraphsTitle;
                     break;
                 case 'inverse':
-                    outputText = inputText.value.split('').map(char => 
+                    outputText = inputText.value.split('').map(char =>
                         char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
                     ).join('');
                     break;
             }
-        
+
             // Update the input field with the converted text
             inputText.value = outputText;
         }
@@ -211,9 +222,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43339302-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-43339302-6');
     </script>
 </body>
+
 </html>

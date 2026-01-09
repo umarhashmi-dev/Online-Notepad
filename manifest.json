@@ -1,7 +1,7 @@
 {
-  "short_name": "Notepad",
-  "name": "Notepad",
-  "description": "An offline-capable, quick, and distraction-free Notepad",
+  "short_name": "Notepad Online",
+  "name": "Notepad Online",
+  "description": "A free, offline-capable online notepad. Modern text editor with no login required.",
   "display": "standalone",
   "icons": [
     {
@@ -54,8 +54,10 @@
   "background_color": "#EEEEEE",
   "url_handlers": [
     {
-      "origin": "https://notepad.js.org"
+      "origin": "https://www.notepadonline.app"
     }
   ],
-  "display_override": ["minimal-ui"]
+  "display_override": [
+    "minimal-ui"
+  ]
 }

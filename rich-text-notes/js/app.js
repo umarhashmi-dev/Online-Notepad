@@ -1,102 +1,102 @@
 $(document).ready(function () {
     // Affiliate links data
-	const affiliateLinks = [
-		{
-			text: "Video Tap — Effortlessly turn your videos into text-based content",
-			url: "https://videotap.com?via=amitmerchant",
-			active: false
-		},
-		{
-			text: "Support Notepad's sustainable development — Buy me a coffee! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
+    const affiliateLinks = [
         {
-			text: "I work on this app in my spare time. Buy me a coffee for your support!",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: true
-		},
-		{
-			text: "Buy me a coffee if you enjoy using this little app! 😻",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: true
-		},
-		{
-			text: "🚀 New → Simple Kanban",
-			url: "/kanban",
-			active: false
-		},
-		{
-			isFeature: true,
-			isActive: true,
-			text: "Want to try a Deep Breathing Exercise tool? 🧘",
-			url: "#new-feature-modal",
-			dataTarget: "#newFeatureModal",
-			active: false
-		}
-	];
+            text: "Check out my other projects",
+            url: "https://www.umarhashmi.dev",
+            active: false
+        },
+        {
+            text: "Support Notepad's sustainable development — Visit my website! ❤️",
+            url: "https://www.umarhashmi.dev",
+            active: false
+        },
+        {
+            text: "I work on this app in my spare time. Visit my website for your support!",
+            url: "https://www.umarhashmi.dev",
+            active: true
+        },
+        {
+            text: "Visit my website if you enjoy using this little app! 😻",
+            url: "https://www.umarhashmi.dev",
+            active: true
+        },
+        {
+            text: "🚀 New → Simple Kanban",
+            url: "/kanban",
+            active: false
+        },
+        {
+            isFeature: true,
+            isActive: true,
+            text: "Want to try a Deep Breathing Exercise tool? 🧘",
+            url: "#new-feature-modal",
+            dataTarget: "#newFeatureModal",
+            active: false
+        }
+    ];
 
-	// Function to show random affiliate link
-	function showRandomAffiliateLink() {
-		const activeAffiliates = affiliateLinks.filter(affiliate => affiliate.active);
-		const randomIndex = Math.floor(Math.random() * activeAffiliates.length);
-		const affiliate = activeAffiliates[randomIndex];
+    // Function to show random affiliate link
+    function showRandomAffiliateLink() {
+        const activeAffiliates = affiliateLinks.filter(affiliate => affiliate.active);
+        const randomIndex = Math.floor(Math.random() * activeAffiliates.length);
+        const affiliate = activeAffiliates[randomIndex];
 
-		if (!affiliate) {
-			return;
-		}
+        if (!affiliate) {
+            return;
+        }
 
-		$('#affiliateText').text(affiliate.text);
-		$('#affiliateLink').attr('href', affiliate.url);
-		$('#affiliatePopup').addClass('show');
+        $('#affiliateText').text(affiliate.text);
+        $('#affiliateLink').attr('href', affiliate.url);
+        $('#affiliatePopup').addClass('show');
 
-		if (affiliate.isFeature && affiliate.isActive) {
-			$('#affiliateLink').attr('data-target', affiliate.dataTarget);
-			$('#affiliateLink').attr('data-toggle', 'modal');
-			$('#affiliateLink').removeAttr('target');
-		}
-	}
+        if (affiliate.isFeature && affiliate.isActive) {
+            $('#affiliateLink').attr('data-target', affiliate.dataTarget);
+            $('#affiliateLink').attr('data-toggle', 'modal');
+            $('#affiliateLink').removeAttr('target');
+        }
+    }
 
-	// Close affiliate popup
-	$('#closeAffiliatePopup').on('click', function () {
-		$('#affiliatePopup').removeClass('show');
-	});
+    // Close affiliate popup
+    $('#closeAffiliatePopup').on('click', function () {
+        $('#affiliatePopup').removeClass('show');
+    });
 
-	// Show affiliate popup after a delay
-	setTimeout(showRandomAffiliateLink, 5000);
+    // Show affiliate popup after a delay
+    setTimeout(showRandomAffiliateLink, 5000);
 
     const quill = new Quill('#editor', {
         theme: 'snow',
         placeholder: 'Type your text here...',
         modules: {
             toolbar: [
-              // Text formatting options
-              ['bold', 'italic', 'underline', 'strike'],
-              ['blockquote', 'code-block'],
-              
-              // List formatting
-              [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-              [{ 'indent': '-1'}, { 'indent': '+1' }],
-              
-              // Text alignment
-              [{ 'align': [] }],
-              
-              // Links and embeds
-              ['link', 'image', 'video'],
-              
-              // Font and size
-              [{ 'font': [] }, { 'size': ['small', 'medium', 'large', 'huge'] }],
-              
-              // Color options
-              [{ 'color': [] }, { 'background': [] }],
-              
-              // More advanced formatting
-              [{ 'script': 'sub'}, { 'script': 'super'}],
-              
-              // Emoji and symbols (optional)
-              ['formula']
+                // Text formatting options
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+
+                // List formatting
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'indent': '-1' }, { 'indent': '+1' }],
+
+                // Text alignment
+                [{ 'align': [] }],
+
+                // Links and embeds
+                ['link', 'image', 'video'],
+
+                // Font and size
+                [{ 'font': [] }, { 'size': ['small', 'medium', 'large', 'huge'] }],
+
+                // Color options
+                [{ 'color': [] }, { 'background': [] }],
+
+                // More advanced formatting
+                [{ 'script': 'sub' }, { 'script': 'super' }],
+
+                // Emoji and symbols (optional)
+                ['formula']
             ]
-          }
+        }
     });
 
     quill.focus();
@@ -127,26 +127,25 @@ $(document).ready(function () {
     })
 
     $(document).on('click', function (event) {
-        if(
-            $('#iconDropdown').hasClass('show') 
+        if (
+            $('#iconDropdown').hasClass('show')
             && !$(event.target).is('#themeIcon')
         ) {
-		    $('#iconDropdown').removeClass('show');
+            $('#iconDropdown').removeClass('show');
         }
-	});
+    });
 
     // This listens for keyboard shortcuts
-	document.onkeydown = function (event) {
-		event = event || window.event;
+    document.onkeydown = function (event) {
+        event = event || window.event;
 
-		if ((event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
-			downloadAsPdf();
-			event.preventDefault();
-		}
+        if ((event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
+            downloadAsPdf();
+            event.preventDefault();
+        }
     };
 
-    function downloadAsPdf()
-    {
+    function downloadAsPdf() {
         var delta = quill.getContents();
         var htmlContent = quill.root.innerHTML;
         const pdf = new window.jspdf.jsPDF();
@@ -185,7 +184,7 @@ $(document).ready(function () {
 
     function getCurrentDate() {
         const currentDate = new Date();
-    
+
         return currentDate.getDate() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getFullYear();
     }
 });

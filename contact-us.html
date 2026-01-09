@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Us - Notepad Online</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4d4d4d">
+    <meta name="description" content="Contact us at Notepad Online for support and feedback.">
+    <meta name="author" content="Umar Hashmi">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        body.dark .content-container {
+            background: #1e1e1e;
+            color: #ddd;
+        }
+
+        body.dark h1,
+        body.dark h2,
+        body.dark h3 {
+            color: #fff;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand app-heading glow-text tilt-css" href="index.html">Notepad Online</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-container">
+            <h1>Contact Us</h1>
+            <p>We value your feedback and are here to help you with any questions or issues you may have while using
+                Notepad Online.</p>
+
+            <h3>Get in Touch</h3>
+            <p>If you have any questions about this website, our services, or would like to report a bug, please feel
+                free to contact us through the following channels:</p>
+
+            <div class="contact-info">
+                <p><strong>Email Support:</strong> <a href="mailto:hello@umarhashmi.dev">hello@umarhashmi.dev</a></p>
+                <p><strong>Website:</strong> <a href="https://umarhashmi.dev" target="_blank">umarhashmi.dev</a></p>
+            </div>
+
+            <h3>Response Time</h3>
+            <p>We aim to respond to all inquiries within 24-48 business hours. Thank you for your patience and for
+                choosing Notepad Online.</p>
+
+            <h3>Social Media</h3>
+            <p>Stay updated with our latest features and announcements by visiting the developer's profile on LinkedIn
+                or Twitter (if applicable).</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">Terms & Conditions</a>
+                <a href="about-us.html">About Us</a>
+                <a href="contact-us.html">Contact Us</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; <span id="year"></span> <a href="https://umarhashmi.dev" target="_blank">Umar Hashmi</a>. All
+                rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>

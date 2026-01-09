@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="A dead simple app to take and manage multiple notes">
-    <meta name="author" content="Amit Merchant">
+    <meta name="author" content="Umar Hashmi">
     <meta name="keywords" content="tab,multiple notes,tabbypad,simple notepad" />
     <meta name="application-name" content="Tabbypad" />
     <meta name="theme-color" content="#343a40">
-    
-    <meta property="og:title" content="Tabbypad | notepad.js.org" />
+
+    <title>Tabbypad | Take and manage multiple notes effortlessly | Notepad Online</title>
+    <meta property="og:title" content="Tabbypad | Notepad Online" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://notepad.js.org/tabbypad" />
+    <meta property="og:url" content="https://www.notepadonline.app/tabbypad" />
     <meta property="og:description" content="A dead simple app to take and manage multiple notes" />
-    <meta property="og:image" content="https://notepad.js.org/art/tabbypad.png" />
-    
+    <meta property="og:image" content="https://www.notepadonline.app/art/tabbypad.png" />
+
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Tabbypad | notepad.js.org" />
+    <meta name="twitter:title" content="Tabbypad | Notepad Online" />
     <meta name="twitter:description" content="A dead simple app to take and manage multiple notes" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:image" content="https://notepad.js.org/art/tabbypad.png" />
+    <meta property="twitter:image" content="https://www.notepadonline.app/art/tabbypad.png" />
 
-    <title>Tabbypad | Take and manage multiple notes effortlessly | notepad.js.org</title>
+    <title>Tabbypad | Take and manage multiple notes effortlessly | Notepad Online</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="flex-navbar">
             <span class="navbar-brand generic-flex">
-                <a href="/" class="brand-title">Notepad</a>
+                <a href="/" class="brand-title">Notepad Online</a>
                 <img src="img/icons/slash.svg" />
                 <span>Tabbypad</span>
             </span>
             <div class="generic-flex btn-container">
                 <button class="btn btn-link text-white" id="downloadAllNotesBtn" title="Download All Notes">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
-                    </svg>                      
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
+                    </svg>
                 </button>
                 <button class="btn btn-link text-white" data-toggle="modal" href="#aboutModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                    </svg> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                    </svg>
                 </button>
-            </div> 
+            </div>
         </div>
     </nav>
 
@@ -63,24 +70,55 @@
     <div id="tabbypad">
         <div class="grid-container" id="gridContainer"></div>
     </div>
-    
+
     <!-- Modal for Fullscreen Note -->
     <div id="noteModal" class="custom-modal">
         <div class="custom-modal-content">
             <div class="top-container">
                 <a href="javascript:void(0);" id="fullscreenToggleBtn" title="Maximize / Minimize the note">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 9V8C21 5.79086 18.9853 4 16.5 4H15.25M21 15V16C21 18.2091 18.9853 20 16.5 20H15.25M3 15V16C3 18.2091 5.01472 20 7.5 20H8.75M3 9V8C3 5.79086 5.01472 4 7.5 4H8.75" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M21 9V8C21 5.79086 18.9853 4 16.5 4H15.25M21 15V16C21 18.2091 18.9853 20 16.5 20H15.25M3 15V16C3 18.2091 5.01472 20 7.5 20H8.75M3 9V8C3 5.79086 5.01472 4 7.5 4H8.75"
+                                stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
                 </a>
                 <div class="color-picker">
-                    <div class="color-option" data-color="pastel-yellow" style="background-color: #FFF9C4; border-color: #ebe07c;"></div>
-                    <div class="color-option" data-color="pastel-blue" style="background-color: #E3F2FD; border-color: #BBDEFB;"></div>
-                    <div class="color-option" data-color="pastel-green" style="background-color: #E8F5E9; border-color: #C8E6C9;"></div>
-                    <div class="color-option" data-color="pastel-pink" style="background-color: #FCE4EC; border-color: #F8BBD0;"></div>
-                    <div class="color-option" data-color="pastel-purple" style="background-color: #F3E5F5; border-color: #E1BEE7;"></div>
-                    <div class="color-option selected" data-color="default-grid-color" style="background-color: #ffffff; border-color: #ccc;"></div>
+                    <div class="color-option" data-color="pastel-yellow"
+                        style="background-color: #FFF9C4; border-color: #ebe07c;"></div>
+                    <div class="color-option" data-color="pastel-blue"
+                        style="background-color: #E3F2FD; border-color: #BBDEFB;"></div>
+                    <div class="color-option" data-color="pastel-green"
+                        style="background-color: #E8F5E9; border-color: #C8E6C9;"></div>
+                    <div class="color-option" data-color="pastel-pink"
+                        style="background-color: #FCE4EC; border-color: #F8BBD0;"></div>
+                    <div class="color-option" data-color="pastel-purple"
+                        style="background-color: #F3E5F5; border-color: #E1BEE7;"></div>
+                    <div class="color-option selected" data-color="default-grid-color"
+                        style="background-color: #ffffff; border-color: #ccc;"></div>
                 </div>
                 <span class="close">
-                    <svg width="25" height="25" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Close</title> <g id="Page-1" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd"> <g id="Close"> <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect> <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="3" stroke-linecap="round"> </line> <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310" stroke-width="3" stroke-linecap="round"> </line> </g> </g> </g></svg>
+                    <svg width="25" height="25" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>Close</title>
+                            <g id="Page-1" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
+                                <g id="Close">
+                                    <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+                                    <line x1="16.9999" y1="7" x2="7.00001" y2="16.9999" id="Path" stroke="#0C0310"
+                                        stroke-width="3" stroke-linecap="round"> </line>
+                                    <line x1="7.00006" y1="7" x2="17" y2="16.9999" id="Path" stroke="#0C0310"
+                                        stroke-width="3" stroke-linecap="round"> </line>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
                 </span>
             </div>
             <textarea id="fullscreenNote" rows="10" style="width: 100%;"></textarea>
@@ -88,16 +126,22 @@
                 <button id="deleteNoteBtn" class="btn btn-danger">Delete</button>
                 <div class="flex-note-footer">
                     <a href="javascript:void(0);" id="copyNoteBtn" title="Copy Note">
-                        <svg class="copy-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                        </svg>  
-                        <svg class="checkmark-icon" style="display: none;" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000">
+                        <svg class="copy-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                        </svg>
+                        <svg class="checkmark-icon" style="display: none;" width="25" height="25"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="#000">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                         </svg>
                     </a>
                     <a href="javascript:void(0);" id="downloadNoteBtn" title="Download Note">
-                        <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
+                        <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="#000000">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
                         </svg>
                     </a>
                     <button id="saveNoteBtn" class="btn btn-primary">Save Note</button>
@@ -107,7 +151,8 @@
     </div>
 
     <!-- About Modal -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,8 +162,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>As the name suggests, <b>Tabbypad</b> is a convenient tool that allows you to jot down multiple notes without any fuss.</p> 
-                    <p>It has following features:</p> 
+                    <p>As the name suggests, <b>Tabbypad</b> is a convenient tool that allows you to jot down multiple
+                        notes without any fuss.</p>
+                    <p>It has following features:</p>
                     <ul>
                         <li>Write multiple notes in plain text</li>
                         <li>Search across notes</li>
@@ -127,9 +173,12 @@
                         <li>Grid layout for easy navigation</li>
                         <li>Simple by design</li>
                     </ul>
-                    <p>Enjoy using this tool? If so, consider <a href="https://buymeacoffee.com/amitmerchant" target="_blank">buying me a coffee</a> so that I keep working on improving it further and the experience remains ad-free.</p>
+                    <p>Enjoy using this tool? If so, consider <a href="https://www.umarhashmi.dev"
+                            target="_blank">visiting my website</a> so that I keep working on improving it further and
+                        the experience remains ad-free.</p>
                     <p class="text-center mb-0">
-                        <b>Brought to you by <a href="https://notepad.js.org/" class="about-author-link">notepad.js.org</a></b>
+                        <b>Brought to you by <a href="https://www.notepadonline.app/" class="about-author-link">Notepad
+                                Online</a></b>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -146,7 +195,8 @@
 
     <div class="delete-confirmation-container">
         <!-- Confirmation Modal -->
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+            aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -166,7 +216,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -178,9 +228,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43339302-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-43339302-6');
     </script>
 </body>
+
 </html>

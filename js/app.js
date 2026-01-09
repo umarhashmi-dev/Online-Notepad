@@ -1,155 +1,7 @@
 $(document).ready(function () {
-	const toastLinks = [
-		{
-			text: "Support Notepad's sustainable development — Buy me a coffee! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "I work on this app in my spare time. Buy me a coffee for your support!",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: true
-		},
-		{
-			text: "🎉 Happy New Year! If this app made your year a little easier, you can buy me a coffee ☕️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "This app is intentionally kept ad-free. If you appreciate that, buy me a coffee. Thank you! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: true
-		},
-		{
-			text: "I strive to craft this app to perfection. If you admire the effort, consider buying me a coffee!",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "Thank you for using this app. If you’d like to support the development, buy me a coffee.",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: true
-		},
-		{
-			text: "If you enjoy using this app, consider buying me a coffee to support it! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "Your support keeps this app going — leave a tip if you can! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "Love the ad-free experience? Buy me a coffee to keep it that way!",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "I hate ads on my Notepad. If you feel the same, consider buying me a coffee! ❤️",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "Send anonymous feature suggestions",
-			url: "https://docs.google.com/forms/d/1NuSl4FzUXRR6maOaGNfUmBdNJ-l9neBzzp_JwDm3xZI",
-			active: false
-		},
-		{
-			text: "We rely on the supporters like you to keep Notepad thriving!",
-			url: "https://buymeacoffee.com/amitmerchant",
-			active: false
-		},
-		{
-			text: "🚀 New tool → Case Converter",
-			url: "/case-converter",
-			active: false
-		},
-		{
-			isFeature: true,
-			isActive: true,
-			text: "New → Mimic typewriter sound when typing. Enable it from the Preferences popup.",
-			url: "#preferencesModal",
-			dataTarget: "#preferencesModal",
-			active: false
-		}
-	];
+	// Toast notification logic removed for Notepad Online overhaul
 
-	// Function to show a random link
-	function showRandomToastLink() {
-		const activeLinks = toastLinks.filter(link => link.active);
-		const randomIndex = Math.floor(Math.random() * activeLinks.length);
-		const link = activeLinks[randomIndex];
-
-		if (!link) {
-			return;
-		}
-
-		$('#toastText').text(link.text);
-		$('#toastLink').attr('href', link.url);
-		$('#toastPopup').addClass('show');
-
-		if (link.isFeature && link.isActive) {
-			$('#toastLink').attr('data-target', link.dataTarget);
-			$('#toastLink').attr('data-toggle', 'modal');
-			$('#toastLink').removeAttr('target');
-		}
-	}
-
-	// Function to close toast with animation
-	function closeToastPopup() {
-		const $toast = $('#toastPopup');
-		$toast.addClass('hide');
-		setTimeout(function () {
-			$toast.removeClass('show hide');
-		}, 500);
-	}
-
-	// Close toast popup
-	$('#closeToastPopup').on('click', function () {
-		closeToastPopup();
-	});
-	
-	// Close toast popup when link is clicked
-	$('#toastLink').on('click', function () {
-		closeToastPopup();
-	});
-	
-	// Show toast popup after a delay
-	setTimeout(showRandomToastLink, 5000);
-	
-	// Setup coffee icon hover animation
-	setupCoffeeIconAnimation();
-
-	const welcomeText = `Welcome! This is an offline-capable Notepad which is a Progressive Web App.
-
-The app serves the following features:
-
-- Your notes are saved in real-time as you type.
-- Installable on supported browsers for offline usage.
-- "Add To Home Screen" feature on Android-supported devices to launch the app from the home screen.
-- Dark mode.
-- Privacy-focused - Never collects your precious data.
-- Light-weight - Loads almost instantly.
-- Writing timer.
-- View Note Statistics.
-- Ability to mimic typewriter sound when typing.
-- Keyboard shortcuts for common actions.
-- Focus mode to leave you with a barebones and pristine editor.
-- Full-screen mode for a distraction-free writing experience.
-- Floating window (in supported browsers) to effectively take notes across other apps.
-- Download notes as plain text, PDF, HTML, and DOCX file.
-- Ability to play ambient noise to help you focus.
-- It's proudly open-source!
-
-CAUTION: Since the app uses the browser's localStorage to store your notes, 
-it's recommended that you take a backup of your notes more often using the 
-"Download Notes" button or by pressing the "Ctrl/Cmd + S" keys.
-
-Lastly, if you're using Notepad, and want to support the development, 
-you can buy me a coffee — the link of which is available in the About section.
-
-** Delete this text and start writing your notes **`;
+	const welcomeText = '';
 
 	const darkmodeText = 'Enable dark mode [Ctrl/Cmd + M]';
 	const lightmodeText = 'Enable light mode [Ctrl/Cmd + M]';
@@ -169,7 +21,58 @@ you can buy me a coffee — the link of which is available in the About section.
 		metaThemeColor
 	};
 
-	const noteItem = state.note && state.note != '' ? state.note : welcomeText;
+	// Note Manager Initialization
+	let notes = JSON.parse(localStorage.getItem('notes') || '[]');
+	let currentNoteId = localStorage.getItem('currentNoteId');
+
+	// Migration: If no notes array but legacy note exists
+	if (notes.length === 0) {
+		const existingNote = localStorage.getItem('note');
+		if (existingNote) {
+			const newNote = {
+				id: 'note-' + Date.now(),
+				title: 'Imported Note',
+				content: existingNote,
+				date: new Date().toLocaleString()
+			};
+			notes.push(newNote);
+			currentNoteId = newNote.id;
+		} else {
+			// New User
+			const newNote = {
+				id: 'note-' + Date.now(),
+				title: 'My First Note',
+				content: welcomeText,
+				date: new Date().toLocaleString()
+			};
+			notes.push(newNote);
+			currentNoteId = newNote.id;
+		}
+		localStorage.setItem('notes', JSON.stringify(notes));
+		localStorage.setItem('currentNoteId', currentNoteId);
+	}
+
+	// Ensure valid currentNoteId
+	if (!currentNoteId && notes.length > 0) {
+		currentNoteId = notes[0].id;
+		localStorage.setItem('currentNoteId', currentNoteId);
+	}
+
+	// Get Current Note Content
+	let currentNote = notes.find(n => n.id === currentNoteId);
+	if (!currentNote) {
+		// Fallback if ID invalid
+		if (notes.length > 0) {
+			currentNote = notes[0];
+			currentNoteId = currentNote.id;
+			localStorage.setItem('currentNoteId', currentNoteId);
+		} else {
+			// Should not happen due to init above, but safety
+			currentNote = { content: '' };
+		}
+	}
+
+	const noteItem = currentNote.content;
 	const characterAndWordCountText = calculateCharactersAndWords(noteItem);
 
 	let typewriterSoundEnabled;
@@ -199,14 +102,14 @@ you can buy me a coffee — the link of which is available in the About section.
 	if (!userChosenTypewriterVolume) {
 		$('#typewriterVolume').val(editorConfig.defaultTypewriterVolume);
 		$('#typewriterVolumeValue').text(editorConfig.defaultTypewriterVolume + '%');
-	}else {
+	} else {
 		$('#typewriterVolume').val(userChosenTypewriterVolume);
 		$('#typewriterVolumeValue').text(userChosenTypewriterVolume + '%');
 	}
-	
+
 	function playTypeSound() {
 		if (!typewriterSoundEnabled) return;
-		
+
 		// Clone so rapid typing doesn't cut the previous sound
 		const s = typeSound.cloneNode();
 
@@ -240,10 +143,10 @@ you can buy me a coffee — the link of which is available in the About section.
 
 		const isPrintable = (
 			// Single character keys (letters, numbers, symbols)
-			e.key.length === 1 || 
+			e.key.length === 1 ||
 			// Common editing keys
 			[
-				'Delete', 'Backspace', 'Enter', ' ', 'Space', 
+				'Delete', 'Backspace', 'Enter', ' ', 'Space',
 				'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
 				'Home', 'End', 'PageUp', 'PageDown'
 			].includes(e.key) ||
@@ -260,7 +163,7 @@ you can buy me a coffee — the link of which is available in the About section.
 	});
 
 	// Handle typewriter sound toggle
-	$('#typewriterSound').on('change', function() {
+	$('#typewriterSound').on('change', function () {
 		const isEnabled = $(this).is(':checked');
 		localStorage.setItem('userChosenTypewriterSound', isEnabled ? 'Yes' : 'No');
 		typewriterSoundEnabled = isEnabled;
@@ -274,7 +177,7 @@ you can buy me a coffee — the link of which is available in the About section.
 
 	// Handle typewriter volume change
 	let volumePreviewTimer = null;
-	$('#typewriterVolume').on('input', function() {
+	$('#typewriterVolume').on('input', function () {
 		const volume = $(this).val();
 		localStorage.setItem('userChosenTypewriterVolume', volume);
 
@@ -294,7 +197,7 @@ you can buy me a coffee — the link of which is available in the About section.
 	});
 
 	notepad.wordCount.text(characterAndWordCountText);
-	notepad.note.val(noteItem);
+	notepad.note.html(noteItem);
 
 	$('[data-toggle="tooltip"]').tooltip();
 
@@ -406,7 +309,7 @@ you can buy me a coffee — the link of which is available in the About section.
 	} else if (state.mode && state.mode === 'light') {
 		enableLightMode(darkmodeText, lightMetaColor, metaThemeColor);
 
-		$('input[name="themes"][value="light"]').prop('checked', true);	
+		$('input[name="themes"][value="light"]').prop('checked', true);
 	} else {
 		enableDeviceTheme(themeConfig);
 
@@ -415,9 +318,9 @@ you can buy me a coffee — the link of which is available in the About section.
 
 	const themeRadios = document.querySelectorAll('input[name="themes"]');
 
-    themeRadios.forEach(radio => {
-        radio.addEventListener('change', (event) => {
-            switch (event.target.value) {
+	themeRadios.forEach(radio => {
+		radio.addEventListener('change', (event) => {
+			switch (event.target.value) {
 				case 'dark':
 					enableDarkMode(lightmodeText, darkMetaColor, metaThemeColor);
 					break;
@@ -428,26 +331,78 @@ you can buy me a coffee — the link of which is available in the About section.
 					enableDeviceTheme(themeConfig);
 					break;
 			}
-        });
-    });
+		});
+	});
+
+
+	// Save Current Note Content
+	function saveCurrentNote() {
+		if (!currentNoteId) return;
+		const currentNoteIndex = notes.findIndex(n => n.id === currentNoteId);
+		if (currentNoteIndex !== -1) {
+			const currentNote = notes[currentNoteIndex];
+			currentNote.content = notepad.note.html();
+
+			// Update title ONLY if not manually renamed
+			if (!currentNote.isRenamed) {
+				const lines = currentNote.content.split('\n');
+				let title = lines[0].trim().substring(0, 30);
+				if (title.length === 0) title = "Untitled Note";
+				currentNote.title = title;
+			}
+
+			currentNote.date = new Date().toLocaleString();
+
+			notes[currentNoteIndex] = currentNote; // Ensure update
+			localStorage.setItem('notes', JSON.stringify(notes));
+			renderNotesList();
+		}
+	}
 
 	notepad.note.on('input', debounce(function () {
-		const characterAndWordCountText = calculateCharactersAndWords(get(this).val());
+		const content = get(this).html();
+		const characterAndWordCountText = calculateCharactersAndWords(content);
 		notepad.wordCount.text(characterAndWordCountText);
-		setState('note', get(this).val());
+
+		// Save to Notes Array
+		if (currentNoteId) {
+			const noteIndex = notes.findIndex(n => n.id === currentNoteId);
+			if (noteIndex !== -1) {
+				notes[noteIndex].content = content;
+
+				// Update Title dynamically (First 30 chars of first line) ONLY if not manually renamed
+				if (!notes[noteIndex].isRenamed) {
+					const lines = content.split('\n');
+					let title = lines[0].trim().substring(0, 30);
+					if (title.length === 0) title = "Untitled Note";
+					notes[noteIndex].title = title;
+				}
+				notes[noteIndex].date = new Date().toLocaleString();
+
+				localStorage.setItem('notes', JSON.stringify(notes));
+
+				// Note: Removed legacy setState('note', content) to avoid shared state issues
+
+				// Update Sidebar Item UI (Title/Date) without full re-render if possible, 
+				// or just call renderNotesList() debounced? 
+				// For simplicity, let's update simple text or re-render.
+				renderNotesList();
+			}
+		}
 	}, 500));
+
 
 	notepad.note.keydown(function (e) {
 		const tabIndentation = notepad.tabIndentation.prop('checked');
 
 		if (e.key === "Tab" && tabIndentation) {
-			e.preventDefault(); 
-	
+			e.preventDefault();
+
 			let textarea = e.target;
 			let start = textarea.selectionStart;
 			let end = textarea.selectionEnd;
 			let tabCharacter = "\t";
-	
+
 			if (start === end) {
 				// Single cursor position: Insert tab
 				document.execCommand("insertText", false, tabCharacter);
@@ -457,7 +412,7 @@ you can buy me a coffee — the link of which is available in the About section.
 				let value = textarea.value;
 				let selectedText = value.substring(start, end);
 				let lines = selectedText.split("\n");
-	
+
 				if (e.shiftKey) {
 					// Shift+Tab: Remove leading tab if present
 					let unindentedLines = lines.map(line =>
@@ -473,8 +428,25 @@ you can buy me a coffee — the link of which is available in the About section.
 		}
 	});
 
-	notepad.clearNotes.on('click', function () {
-		deleteNotes();
+	notepad.clearNotes.off('click').on('click', function () {
+		if (confirm('Are you sure you want to delete this note?')) {
+			if (notes.length <= 1) {
+				// Don't delete last note, just clear content
+				notepad.note.html('');
+				notepad.note.trigger('input');
+			} else {
+				notes = notes.filter(n => n.id !== currentNoteId);
+				currentNoteId = notes[0].id;
+				localStorage.setItem('notes', JSON.stringify(notes));
+				localStorage.setItem('currentNoteId', currentNoteId);
+
+				// Load new current
+				const newCurrent = notes.find(n => n.id === currentNoteId);
+				notepad.note.html(newCurrent.content);
+				notepad.note.trigger('input');
+				renderNotesList();
+			}
+		}
 	});
 
 	notepad.copyToClipboard.click(function () {
@@ -796,7 +768,7 @@ you can buy me a coffee — the link of which is available in the About section.
 			playerContainer.classList.add("pip");
 			overlay.style.display = "block";
 			overlay.style.pointerEvents = "all";
-			
+
 			// Stop the writing timer 
 			// if it is running (js/timer.js)
 			if (timerConfig.timer) {
@@ -895,13 +867,13 @@ you can buy me a coffee — the link of which is available in the About section.
 
 	// Font selection handler
 	const fontSelect = document.getElementById('font');
-	
+
 	// Check for legacy font preferences and migrate them to the new system
 	function migrateLegacyFontPrefs() {
 		const dyslexicFont = localStorage.getItem('dyslexicFont') === 'true';
 		const monospacedFont = localStorage.getItem('monospaced') === 'true';
 		const serifFont = localStorage.getItem('serifFont') === 'true';
-		
+
 		if (dyslexicFont) {
 			localStorage.setItem('selectedFont', 'dyslexic');
 		} else if (monospacedFont) {
@@ -911,20 +883,20 @@ you can buy me a coffee — the link of which is available in the About section.
 		} else {
 			localStorage.setItem('selectedFont', 'default');
 		}
-		
+
 		// Clear old preferences
 		localStorage.removeItem('dyslexicFont');
 		localStorage.removeItem('monospaced');
 		localStorage.removeItem('serifFont');
 	}
-	
+
 	// Apply font based on selection
 	function applyFont(fontType) {
 		// Remove all font classes first
 		notepad.note.removeClass('dyslexic monospaced serif');
-		
+
 		// Add the selected font class
-		switch(fontType) {
+		switch (fontType) {
 			case 'dyslexic':
 				notepad.note.addClass('dyslexic');
 				break;
@@ -937,35 +909,198 @@ you can buy me a coffee — the link of which is available in the About section.
 			// 'default' case doesn't need any class
 		}
 	}
-	
+
 	// Initialize font selection
 	function initFontSelection() {
 		// Migrate legacy preferences if needed
-		if (localStorage.getItem('dyslexicFont') !== null || 
-			localStorage.getItem('monospaced') !== null || 
+		if (localStorage.getItem('dyslexicFont') !== null ||
+			localStorage.getItem('monospaced') !== null ||
 			localStorage.getItem('serifFont') !== null) {
 			migrateLegacyFontPrefs();
 		}
-		
+
 		// Get the selected font or default to 'default'
 		const selectedFont = localStorage.getItem('selectedFont') || 'default';
-		
+
 		// Set the dropdown value
 		fontSelect.value = selectedFont;
-		
+
 		// Apply the font
 		applyFont(selectedFont);
 	}
-	
+
 	// Handle font selection change
 	fontSelect.addEventListener('change', (e) => {
 		const selectedFont = e.target.value;
 		localStorage.setItem('selectedFont', selectedFont);
 		applyFont(selectedFont);
 	});
-	
+
 	// Initialize font selection on page load
 	initFontSelection();
+
+	// Sidebar Toggle
+	$('#sidebarToggle').on('click', function () {
+		$('.sidebar').toggleClass('hidden');
+	});
+
+	// Helper Functions
+	function saveCurrentNote() {
+		if (!currentNoteId) return;
+		const currentNoteIndex = notes.findIndex(n => n.id === currentNoteId);
+		if (currentNoteIndex !== -1) {
+			const currentNote = notes[currentNoteIndex];
+			currentNote.content = notepad.note.html();
+
+			// Update title ONLY if not manually renamed
+			if (!currentNote.isRenamed) {
+				const lines = currentNote.content.split('\n');
+				let title = lines[0].trim().substring(0, 30);
+				if (title.length === 0) title = "Untitled Note";
+				currentNote.title = title;
+			}
+
+			currentNote.date = new Date().toLocaleString();
+
+			notes[currentNoteIndex] = currentNote; // Ensure update
+			localStorage.setItem('notes', JSON.stringify(notes));
+			renderNotesList();
+		}
+	}
+
+	function renderNotesList() {
+		const $list = $('#notesList');
+		$list.empty();
+		notes.forEach(note => {
+			const $li = $(`
+                <li class="note-item ${note.id === currentNoteId ? 'active' : ''}" data-id="${note.id}">
+                    <span class="note-title" title="Click to rename" contenteditable="false"></span>
+                    <span class="note-date">${note.date}</span>
+                </li>
+            `);
+			$li.find('.note-title').text(note.title);
+
+			// Renaming Logic
+			$li.find('.note-title').on('click', function (e) {
+				e.stopPropagation(); // Prevent li click
+				const $title = $(this);
+				$title.attr('contenteditable', 'true').focus().addClass('editable');
+
+				// Select all text
+				document.execCommand('selectAll', false, null);
+			});
+
+			$li.find('.note-title').on('blur keydown', function (e) {
+				if (e.type === 'keydown' && e.key !== 'Enter') return;
+				if (e.type === 'keydown') e.preventDefault(); // Prevent newline
+
+				const $title = $(this);
+				const newTitle = $title.text().trim() || "Untitled Note";
+
+				$title.attr('contenteditable', 'false').removeClass('editable');
+				$title.text(newTitle); // Reset text to trimmed version
+
+				const noteIndex = notes.findIndex(n => n.id === note.id);
+				if (noteIndex !== -1) {
+					notes[noteIndex].title = newTitle;
+					notes[noteIndex].isRenamed = true; // Flag as manually renamed
+					localStorage.setItem('notes', JSON.stringify(notes));
+				}
+			});
+
+			$li.click(function () {
+				if (note.id !== currentNoteId) {
+					saveCurrentNote(); // Force save previous note state
+					currentNoteId = note.id;
+					localStorage.setItem('currentNoteId', currentNoteId);
+
+					// Fetch strict fresh content from array
+					const activeNote = notes.find(n => n.id === currentNoteId);
+					const freshContent = activeNote ? activeNote.content : "";
+
+					notepad.note.html(''); // FORCE RESET
+					notepad.note.html(freshContent);
+					// Trigger input to update word counts and ensure state consistency
+					const characterAndWordCountText = calculateCharactersAndWords(freshContent);
+					notepad.wordCount.text(characterAndWordCountText);
+
+					// Removed global state set
+					// setState('note', note.content);
+
+					renderNotesList();
+
+					// On mobile, close sidebar after select
+					if ($(window).width() < 768) {
+						$('.sidebar').addClass('hidden');
+					}
+				}
+			});
+			$list.append($li);
+		});
+	}
+
+	// Theme Toggle Logic
+	const sunIcon = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+	const moonIcon = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+
+	function updateThemeIcon(mode) {
+		const $icon = $('#themeToggleIcon');
+		if (mode === 'dark') {
+			$icon.html(sunIcon); // Show sun to toggle to light
+		} else {
+			$icon.html(moonIcon); // Show moon to toggle to dark
+		}
+	}
+
+	// Override utils.js functions to handle new UI Elements
+	// We attach this to the global scope or re-implement logic here
+	// But since utils.js functions like enableDarkMode are used, we should ensure they do the right thing.
+	// We'll add a listener to the body class change or just manually update here.
+
+	$('#themeToggleBtn').on('click', function () {
+		toggleTheme(themeConfig);
+		const newMode = $(document.body).hasClass('dark') ? 'dark' : 'light';
+		updateThemeIcon(newMode);
+	});
+
+	// Initialize Icon
+	updateThemeIcon(state.mode === 'dark' ? 'dark' : 'light');
+
+	// Add Note Button
+	$('#addNoteBtn').click(function () {
+		saveCurrentNote(); // Ensure current note is saved before creating new
+		const newNote = {
+			id: 'note-' + Date.now(),
+			title: 'New Note',
+			content: '',
+			date: new Date().toLocaleString()
+		};
+		notes.unshift(newNote);
+		currentNoteId = newNote.id;
+		localStorage.setItem('notes', JSON.stringify(notes));
+		localStorage.setItem('currentNoteId', currentNoteId);
+
+		notepad.note.html('');
+		const characterAndWordCountText = calculateCharactersAndWords('');
+		notepad.wordCount.text(characterAndWordCountText);
+		// Removed global state set
+		// setState('note', '');
+
+		notepad.note.focus();
+		renderNotesList();
+
+		if ($(window).width() < 768) {
+			$('.sidebar').addClass('hidden');
+		}
+	});
+
+	// Initial Render of Notes List
+	renderNotesList();
+
+	// Define showToast for PWA install fallback
+	window.showToast = function (msg) {
+		alert(msg);
+	};
 });
 
 document.addEventListener("fullscreenchange", function () {

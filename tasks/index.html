@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A dead simple tasks/todos manager">
-    <meta name="author" content="Amit Merchant">
-    <title>Tasks | notepad.js.org</title>
+    <meta name="author" content="Umar Hashmi">
+    <title>Tasks | Notepad Online</title>
     <meta name="keywords" content="tasks,todos,productivity,manager,notepad" />
     <meta name="application-name" content="Tasks" />
     <meta name="theme-color" content="#222">
 
     <!-- for Facebook -->
-    <meta property="og:title" content="Tasks | notepad.js.org" />
+    <meta property="og:title" content="Tasks | Notepad Online" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://notepad.js.org/tasks" />
+    <meta property="og:url" content="https://www.notepadonline.app/tasks" />
     <meta property="og:description" content="A dead simple tasks/todos manager" />
-    <meta property="og:image" content="https://notepad.js.org/art/tasks-notepad.png" />
+    <meta property="og:image" content="https://www.notepadonline.app/art/tasks-notepad.png" />
 
     <!-- for Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Tasks | notepad.js.org" />
+    <meta name="twitter:title" content="Tasks | Notepad Online" />
     <meta name="twitter:description" content="A dead simple tasks/todos manager" />
-    <meta property="twitter:image" content="https://notepad.js.org/art/tasks-notepad.png" />
+    <meta property="twitter:image" content="https://www.notepadonline.app/art/tasks-notepad.png" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -52,7 +52,14 @@
             <input type="text" id="taskInput" class="form-control" placeholder="Add a new task">
         </div>
         <button id="addTask" class="btn btn-info btn-block generic-flex">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M4 12H20M12 4V20" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </g>
+            </svg>
             Add Task
         </button>
         <div class="task-count">
@@ -64,7 +71,23 @@
         <div id="taskContainer"></div>
         <div id="clearAllContainer" style="display: none; margin-top: 15px;">
             <button id="clearAllTasks" class="btn btn-danger btn-block generic-flex">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M10 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M14 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M4 7H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
+                            stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ffffff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                </svg>
                 Clear All Tasks
             </button>
         </div>
@@ -88,17 +111,18 @@
                             <li>Blazing fast and lightweight.</li>
                         </ul>
                         <p class="about-notice">Enjoy using this tool? If so, consider <a
-                                href="https://buymeacoffee.com/amitmerchant" target="_blank">buying me a coffee</a> so
+                                href="https://www.umarhashmi.dev" target="_blank">buying me a coffee</a> so
                             that I keep working on improving it further and the experience remains ad-free. Icons from
                             <a href="https://heroicons.com/" target="_blank">heroicons</a>, <a
                                 href="https://www.flaticon.com/" target="_blank">Flaticon</a>, <a
                                 href="https://www.svgrepo.com">SVGRepo</a> and <a href="https://iconduck.com"
-                                target="_blank">Iconduck</a>.</p>
+                                target="_blank">Iconduck</a>.
+                        </p>
                         <p style="text-align:center; margin: 10px 0 0 0;">
                             <b class="about-author-container">
                                 Brought to you by
-                                <a href="https://notepad.js.org/" class="about-author-link">
-                                    notepad.js.org
+                                <a href="https://www.notepadonline.app/" class="about-author-link">
+                                    Notepad Online
                                 </a>
                             </b>
                         </p>
@@ -106,7 +130,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="about-icon-container">
-                        <a href="https://github.com/amitmerchant1990/notepad" target="_blank" class="github-icon"
+                        <a href="https://www.umarhashmi.dev" target="_blank" class="github-icon"
                             title="Notepad on GitHub" aria-label="Notepad on GitHub">
                             <svg width="30px" height="30px" viewBox="-4.32 -4.32 56.64 56.64" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +147,7 @@
                                 </g>
                             </svg>
                         </a>
-                        <a href="https://buymeacoffee.com/amitmerchant" target="_blank" class="donate-icon"
+                        <a href="https://www.umarhashmi.dev" target="_blank" class="donate-icon"
                             title="Buy me a coffee">
                             <svg fill="#000000" width="30px" height="30px" viewBox="0 0 50 50"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -155,7 +179,8 @@
     </div>
 
     <!-- Clear All Confirmation Modal -->
-    <div class="modal fade" id="clearAllModal" tabindex="-1" role="dialog" aria-labelledby="clearAllModalLabel" aria-hidden="true">
+    <div class="modal fade" id="clearAllModal" tabindex="-1" role="dialog" aria-labelledby="clearAllModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -170,15 +195,23 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger generic-flex" id="confirmClearAll">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            stroke="#000000">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                             <g id="SVGRepo_iconCarrier">
-                                <path d="M10 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M14 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M4 7H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M10 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M14 11V17" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M4 7H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
+                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                                <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                             </g>
                         </svg>
                         Clear All Tasks
@@ -198,7 +231,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43339302-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-43339302-6');
     </script>

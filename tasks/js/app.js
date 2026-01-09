@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Affiliate links data
     const affiliateLinks = [
         {
-            text: "Support Notepad's development — Buy me a coffee! ❤️",
-            url: "https://buymeacoffee.com/amitmerchant"
+            text: "Support Notepad's development — Visit my website! ❤️",
+            url: "https://www.umarhashmi.dev"
         }
     ];
 
@@ -11,14 +11,14 @@ $(document).ready(function() {
     function showRandomAffiliateLink() {
         const randomIndex = Math.floor(Math.random() * affiliateLinks.length);
         const affiliate = affiliateLinks[randomIndex];
-        
+
         $('#affiliateText').text(affiliate.text);
         $('#affiliateLink').attr('href', affiliate.url);
         $('#affiliatePopup').addClass('show');
     }
 
     // Close affiliate popup
-    $('#closeAffiliatePopup').on('click', function() {
+    $('#closeAffiliatePopup').on('click', function () {
         $('#affiliatePopup').removeClass('show');
     });
 
@@ -29,12 +29,12 @@ $(document).ready(function() {
     loadTasks();
 
     // Clear all tasks button click handler
-    $('#clearAllTasks').click(function() {
+    $('#clearAllTasks').click(function () {
         $('#clearAllModal').modal('show');
     });
 
     // Confirm clear all tasks
-    $('#confirmClearAll').click(function() {
+    $('#confirmClearAll').click(function () {
         $('#taskContainer').empty();
         saveTasks();
         updateTaskCount();
@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
 
     $('#addTask').click(addTask);
-    $('#taskInput').on('keydown', function(event) {
+    $('#taskInput').on('keydown', function (event) {
         if (event.key === 'Enter') addTask();
     });
 
@@ -60,21 +60,21 @@ $(document).ready(function() {
         addTaskToContainer(taskText, false, true); // Add at the top
         saveTasks();
         $('#taskInput').val('');
-        toggleNoTasksMessage(); 
+        toggleNoTasksMessage();
     }
 
     // Event delegation for marking as complete and deleting
-    $('#taskContainer').on('change', '.task-checkbox', function() {
+    $('#taskContainer').on('change', '.task-checkbox', function () {
         let $taskCard = $(this).closest('.task-card');
         let isChecked = $(this).is(':checked');
-        
+
         if (isChecked) {
             $taskCard.addClass('task-completed').appendTo('#taskContainer'); // Move to bottom
-            
+
             // Check if this was the last task being completed
             let totalTasks = $('#taskContainer .task-card').length;
             let completedTasks = $('#taskContainer .task-completed').length;
-            
+
             if (totalTasks > 0 && totalTasks === completedTasks) {
                 // Confetti from bottom left
                 confetti({
@@ -83,7 +83,7 @@ $(document).ready(function() {
                     spread: 70,
                     angle: 60
                 });
-                
+
                 // Confetti from bottom right
                 confetti({
                     origin: { x: 1, y: 1 },  // Bottom right
@@ -95,24 +95,24 @@ $(document).ready(function() {
         } else {
             $taskCard.removeClass('task-completed').prependTo('#taskContainer'); // Move to top
         }
-        
+
         saveTasks();
-    }).on('click', '.delete-task', function() {
+    }).on('click', '.delete-task', function () {
         $(this).closest('.task-card').remove();
         saveTasks();
         toggleNoTasksMessage();
         updateTaskCount();
     });
 
-    $('#taskContainer').on('click', '.task-text', function() {
+    $('#taskContainer').on('click', '.task-text', function () {
         let $textElement = $(this);
         let currentText = $textElement.text();
         let $inputField = $('<input type="text" class="form-control task-edit-input">').val(currentText);
-        
+
         $textElement.replaceWith($inputField);
         $inputField.focus();
 
-        $inputField.on('blur keydown', function(event) {
+        $inputField.on('blur keydown', function (event) {
             if (event.type === 'blur' || event.key === 'Enter') {
                 let updatedText = $inputField.val().trim() || currentText;
                 updatedText = sanitizeInput(updatedText);
@@ -149,7 +149,7 @@ $(document).ready(function() {
 
     function saveTasks() {
         let tasks = [];
-        $('#taskContainer .task-card').each(function() {
+        $('#taskContainer .task-card').each(function () {
             let taskText = $(this).find('.task-text').text();
             let completed = $(this).find('.task-checkbox').is(':checked');
             tasks.push({ text: taskText, completed: completed });
@@ -177,7 +177,7 @@ $(document).ready(function() {
     // Toggle visibility of the "No tasks added" message
     function toggleNoTasksMessage() {
         const hasTasks = $('#taskContainer .task-card').length > 0;
-        
+
         if (hasTasks) {
             $('#noTasksMessage').hide();
             $('#clearAllContainer').show();

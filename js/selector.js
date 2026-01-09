@@ -66,7 +66,7 @@ function selector() {
             serif: selectById('serif'),
         },
         state: {
-            note: getState('note'),
+            // note: getState('note'), // REMOVED to prevent shared state usage
             mode: getState('mode'),
             isUserPreferredTheme: getState('isUserPreferredTheme'),
             userChosenFontSize: getState('userChosenFontSize'),

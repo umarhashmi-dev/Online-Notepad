@@ -24,7 +24,7 @@ function showToast(message) {
     let toast = document.getElementById('toast');
     toast.className = 'show';
     toast.innerHTML = message;
-    
+
     setTimeout(function () {
         toast.className = toast.className.replace('show', '');
     }, 2000);
@@ -160,7 +160,7 @@ function calculateCharactersAndWords(str) {
     const characterString = characterCount > 1 ? 'characters' : 'character';
     const wordString = wordCount > 1 ? 'words' : 'word';
     const wordCountText = `${characterCount} ${characterString} • ${wordCount} ${wordString}`;
-    
+
     return wordCountText;
 }
 
@@ -181,26 +181,26 @@ function calculateNoteStatistics(str) {
 
     const characters = str.length;
     const words = countWords(str);
-    
+
     // Count sentences (split by . ! ?)
     const sentences = str.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-    
+
     // Count paragraphs (split by double newlines or multiple line breaks)
     const paragraphs = str.split(/\n\n+/).filter(p => p.trim().length > 0).length;
-    
+
     // Calculate average word length
     const averageWordLength = words > 0 ? (characters / words).toFixed(2) : 0;
-    
+
     // Calculate reading time (average 200 words per minute)
     const readingTimeMinutes = Math.ceil(words / 200);
     const readingTime = readingTimeMinutes === 1 ? '1 min' : `${readingTimeMinutes} mins`;
-    
+
     // Calculate unique words and most common word
     const wordList = str.toLowerCase().match(/\b[a-z']+\b/g) || [];
     const wordFrequency = {};
     let maxCount = 0;
     let mostCommonWord = 'N/A';
-    
+
     wordList.forEach(word => {
         wordFrequency[word] = (wordFrequency[word] || 0) + 1;
         if (wordFrequency[word] > maxCount) {
@@ -208,10 +208,10 @@ function calculateNoteStatistics(str) {
             mostCommonWord = word;
         }
     });
-    
+
     const uniqueWords = Object.keys(wordFrequency).length;
     const lexicalDensity = words > 0 ? ((uniqueWords / words) * 100).toFixed(1) : 0;
-    
+
     return {
         characters,
         words,
@@ -234,10 +234,10 @@ function copyNotesToClipboard(note) {
 }
 
 function toggleTheme({
-    lightmodeText, 
-    darkmodeText, 
-    lightMetaColor, 
-    darkMetaColor, 
+    lightmodeText,
+    darkmodeText,
+    lightMetaColor,
+    darkMetaColor,
     metaThemeColor
 }) {
     get(document.body).toggleClass('dark');
@@ -254,7 +254,7 @@ function toggleTheme({
 
 function deleteNotes() {
     const { notepad } = selector();
-    
+
     Swal.fire({
         title: 'Want to delete notes?',
         text: "You won't be able to revert this!",
@@ -285,10 +285,10 @@ function toggleFocusMode(notepad) {
     const bodyElement = document.body;
     const textArea = document.getElementById('note');
     const closeButton = document.getElementById('focusModeCloseButton');
-    
+
     // Check if focus mode is currently active
     const isFocusMode = document.documentElement.hasAttribute('data-focus-mode');
-    
+
     if (!isFocusMode) {
         // Entering focus mode
         document.documentElement.setAttribute('data-focus-mode', 'true');
@@ -296,7 +296,7 @@ function toggleFocusMode(notepad) {
         bodyElement.style.paddingTop = '0';
         textArea.style.borderRight = 'none';
         textArea.style.borderLeft = 'none';
-        
+
         // Show close button
         closeButton.style.display = 'block';
 
@@ -305,7 +305,7 @@ function toggleFocusMode(notepad) {
         if (toastPopup) {
             toastPopup.classList.remove('show');
         }
-        
+
         notepad.bottomLine.hide();
 
         // Keep focus on textarea
@@ -322,19 +322,19 @@ function turnOffFocusMode(notepad) {
     const bodyElement = document.body;
     const textArea = document.getElementById('note');
     const closeButton = document.getElementById('focusModeCloseButton');
-    
+
     // Remove focus mode
     document.documentElement.removeAttribute('data-focus-mode');
-    
+
     // Hide close button
     closeButton.style.display = 'none';
-    
+
     // Reset styles
     navbar.style.display = '';
     bodyElement.style.paddingTop = '';
     textArea.style.borderRight = '';
     textArea.style.borderLeft = '';
-    
+
     if (localStorage.getItem('userChosenWordCountPillSelected') === 'Yes' || selector().defaultConfig.defaultShowWordCountPill === 'Yes') {
         notepad.bottomLine.show();
     }
@@ -363,15 +363,15 @@ function exportNotesAsPDF(textToWrite, fileNameToSaveAs) {
     const marginTop = 10;
 
     // Width of text area
-    const maxWidth = 180; 
-    
+    const maxWidth = 180;
+
     const lineHeight = 10;
 
     // Height of a single page
-    const pageHeight = pdf.internal.pageSize.height; 
+    const pageHeight = pdf.internal.pageSize.height;
 
     // Initial Y position for text
-    let yPosition = marginTop; 
+    let yPosition = marginTop;
 
     // Split content into lines that fit within maxWidth
     const lines = pdf.splitTextToSize(textToWrite, maxWidth);
@@ -384,7 +384,7 @@ function exportNotesAsPDF(textToWrite, fileNameToSaveAs) {
         pdf.text(line, marginLeft, yPosition);
         yPosition += lineHeight;
     });
-    
+
     pdf.save(fileNameToSaveAs);
 }
 
@@ -418,10 +418,10 @@ function shareNotes(textToShare) {
     if (navigator.share) {
         navigator.share({
             text: textToShare,
-            url: 'https://notepad.js.org',
+            url: 'https://www.notepadonline.app',
         })
-        .then( () => console.log("Successful share"))
-        .catch(e => console.log("Error sharing:", e))
+            .then(() => console.log("Successful share"))
+            .catch(e => console.log("Error sharing:", e))
     }
 }
 
@@ -432,7 +432,7 @@ function downloadHTML(textToWrite, fileNameToSaveAs) {
             <pre style="white-space: pre-wrap; word-wrap: break-word;">${textToWrite}</pre>
         </body>
     </html>`;
-    
+
     const blob = new Blob([htmlContent], { type: "text/html" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);

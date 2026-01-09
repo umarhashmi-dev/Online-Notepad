@@ -1,7 +1,7 @@
 {
   "web_apps": [
     {
-      "manifest": "https://notepad.js.org/manifest.json",
+      "manifest": "https://www.notepadonline.app/manifest.json",
       "details": {
         "paths": ["/*"]
       }

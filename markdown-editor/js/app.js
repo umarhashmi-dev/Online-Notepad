@@ -1,6 +1,6 @@
 /*!
 * The MIT License (MIT)
-* Copyright (c) 2016 Amit Merchant <bullredeyes@gmail.com>
+* Copyright (c) 2026 Umar Hashmi <https://www.umarhashmi.dev>
  */
 var cm = CodeMirror.fromTextArea(document.getElementById("plainText"), {
   lineNumbers: true,
@@ -19,7 +19,7 @@ window.onload = function () {
 
   if (markdownText) {
     cm.setValue(markdownText);
-    
+
     html = converter.makeHtml(processMarkdownWithKaTeX(markdownText));
     markdownArea.innerHTML = replaceWithEmojis(html);
     document.getElementById("htmlPreview").value = html;
@@ -54,7 +54,7 @@ function processMarkdownWithKaTeX(markdown) {
     delimiters: [
       { left: '$$', right: '$$', display: true },
       { left: '\\(', right: '\\)', display: false },
-      { left: '$', right: '$', display: false } 
+      { left: '$', right: '$', display: false }
     ],
     throwOnError: false,
   });
